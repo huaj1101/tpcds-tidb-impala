@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query67.tpl using seed 1200409435
+
 select  *
 from (select i_category
             ,i_class
@@ -41,4 +41,4 @@ order by i_category
         ,rk
 limit 100;
 
--- end query 1 in stream 0 using template query67.tpl
+

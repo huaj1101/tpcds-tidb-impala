@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query57.tpl using seed 1930872976
+
 with v1 as(
  select i_category, i_brand,
         cc_name,
@@ -45,4 +45,4 @@ with v1 as(
  order by sum_sales - avg_monthly_sales, nsum
  limit 100;
 
--- end query 1 in stream 0 using template query57.tpl
+

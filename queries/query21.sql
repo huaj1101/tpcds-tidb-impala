@@ -1,11 +1,11 @@
--- start query 1 in stream 0 using template query21.tpl using seed 1819994127
+
 select  *
  from(select w_warehouse_name
             ,i_item_id
-            ,sum(case when d_date < cast ('1998-04-08' as date)
+            ,sum(case when d_date < cast ('1998-04-08' as timestamp)
 	                then inv_quantity_on_hand 
                       else 0 end) as inv_before
-            ,sum(case when d_date >= cast ('1998-04-08' as date)
+            ,sum(case when d_date >= cast ('1998-04-08' as timestamp)
                       then inv_quantity_on_hand 
                       else 0 end) as inv_after
    from inventory
@@ -16,8 +16,8 @@ select  *
      and i_item_sk          = inv_item_sk
      and inv_warehouse_sk   = w_warehouse_sk
      and inv_date_sk    = d_date_sk
-     and d_date between (cast ('1998-04-08' as date) - interval 30 days)
-                    and (cast ('1998-04-08' as date) + interval 30 days)
+     and d_date between (cast ('1998-04-08' as timestamp) - interval 30 days)
+                    and (cast ('1998-04-08' as timestamp) + interval 30 days)
    group by w_warehouse_name, i_item_id) x
  where (case when inv_before > 0 
              then inv_after / inv_before 
@@ -27,4 +27,4 @@ select  *
          ,i_item_id
  limit 100;
 
--- end query 1 in stream 0 using template query21.tpl
+

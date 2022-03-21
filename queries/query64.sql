@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query64.tpl using seed 1220860970
+
 with cs_ui as
  (select cs_item_sk
         ,sum(cs_ext_list_price) as sale,sum(cr_refunded_cash+cr_reversed_charge+cr_store_credit) as refund
@@ -118,4 +118,4 @@ order by cs1.product_name
        ,cs1.s1
        ,cs2.s1;
 
--- end query 1 in stream 0 using template query64.tpl
+

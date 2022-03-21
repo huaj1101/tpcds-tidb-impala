@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query46.tpl using seed 1334069554
+
 select  c_last_name
        ,c_first_name
        ,ca_city
@@ -32,4 +32,4 @@ select  c_last_name
           ,ss_ticket_number
   limit 100;
 
--- end query 1 in stream 0 using template query46.tpl
+

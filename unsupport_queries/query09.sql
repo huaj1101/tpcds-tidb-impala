@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query9.tpl using seed 1508406172
+
 select case when (select count(*) 
                   from store_sales 
                   where ss_quantity between 1 and 20) > 240409437
@@ -48,4 +48,4 @@ from reason
 where r_reason_sk = 1
 ;
 
--- end query 1 in stream 0 using template query9.tpl
+

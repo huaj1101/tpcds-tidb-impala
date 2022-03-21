@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query88.tpl using seed 318176889
+
 select  *
 from
  (select count(*) h8_30_to_9
@@ -91,4 +91,4 @@ from
      and store.s_store_name = 'ese') s8
 ;
 
--- end query 1 in stream 0 using template query88.tpl
+

@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query83.tpl using seed 1930872976
+
 with sr_items as
  (select i_item_id item_id,
         sum(sr_return_quantity) sr_item_qty
@@ -64,4 +64,4 @@ with sr_items as
          ,sr_item_qty
  limit 100;
 
--- end query 1 in stream 0 using template query83.tpl
+

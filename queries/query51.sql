@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query51.tpl using seed 1200409435
+
 WITH web_v1 as (
 select
   ws_item_sk item_sk, d_date,
@@ -42,4 +42,4 @@ order by item_sk
         ,d_date
 limit 100;
 
--- end query 1 in stream 0 using template query51.tpl
+

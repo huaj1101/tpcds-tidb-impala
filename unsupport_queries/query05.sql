@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query5.tpl using seed 1819994127
+
 with ssr as
  (select s_store_id,
         sum(sales_price) as sales,
@@ -125,4 +125,4 @@ with ssr as
          ,id
  limit 100;
 
--- end query 1 in stream 0 using template query5.tpl
+

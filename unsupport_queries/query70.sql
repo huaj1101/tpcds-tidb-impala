@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query70.tpl using seed 1200409435
+
 select  
     sum(ss_net_profit) as total_sum
    ,s_state
@@ -35,4 +35,4 @@ select
   ,rank_within_parent
  limit 100;
 
--- end query 1 in stream 0 using template query70.tpl
+

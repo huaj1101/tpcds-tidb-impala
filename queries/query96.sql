@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query96.tpl using seed 1819994127
+
 select  count(*) 
 from store_sales
     ,household_demographics 
@@ -13,4 +13,4 @@ where ss_sold_time_sk = time_dim.t_time_sk
 order by count(*)
 limit 100;
 
--- end query 1 in stream 0 using template query96.tpl
+

@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query20.tpl using seed 345591136
+
 select  i_item_id
        ,i_item_desc 
        ,i_category 
@@ -13,8 +13,8 @@ select  i_item_id
  where cs_item_sk = i_item_sk 
    and i_category in ('Jewelry', 'Sports', 'Books')
    and cs_sold_date_sk = d_date_sk
- and d_date between cast('2001-01-12' as date) 
- 				and (cast('2001-01-12' as date) + interval 30 days)
+ and d_date between cast('2001-01-12' as timestamp) 
+ 				and (cast('2001-01-12' as timestamp) + interval 30 days)
  group by i_item_id
          ,i_item_desc 
          ,i_category
@@ -27,4 +27,4 @@ select  i_item_id
          ,revenueratio
 limit 100;
 
--- end query 1 in stream 0 using template query20.tpl
+

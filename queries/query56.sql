@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query56.tpl using seed 1951559352
+
 with ss as (
  select i_item_id,sum(ss_ext_sales_price) total_sales
  from
@@ -66,4 +66,4 @@ where i_color in ('orchid','chiffon','lace'))
           i_item_id
  limit 100;
 
--- end query 1 in stream 0 using template query56.tpl
+

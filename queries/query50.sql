@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query50.tpl using seed 1819994127
+
 select  
    s_store_name
   ,s_company_id
@@ -56,4 +56,4 @@ order by s_store_name
         ,s_zip
 limit 100;
 
--- end query 1 in stream 0 using template query50.tpl
+

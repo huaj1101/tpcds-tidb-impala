@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query73.tpl using seed 687819129
+
 select c_last_name
        ,c_first_name
        ,c_salutation
@@ -25,4 +25,4 @@ select c_last_name
       and cnt between 1 and 5
     order by cnt desc, c_last_name asc;
 
--- end query 1 in stream 0 using template query73.tpl
+

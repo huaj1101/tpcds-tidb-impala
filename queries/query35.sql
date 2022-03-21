@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query35a.tpl using seed 1930872976
+
 select   
   ca_state,
   cd_gender,
@@ -58,4 +58,4 @@ select
           cd_dep_college_count
  limit 100;
 
--- end query 1 in stream 0 using template query35a.tpl
+

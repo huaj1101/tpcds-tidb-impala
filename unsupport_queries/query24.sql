@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query24.tpl using seed 1220860970
+
 with ssales as
 (select c_last_name
       ,c_first_name
@@ -104,4 +104,4 @@ order by c_last_name
         ,s_store_name
 ;
 
--- end query 1 in stream 0 using template query24.tpl
+

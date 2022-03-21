@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query42.tpl using seed 1819994127
+
 select  dt.d_year
  	,item.i_category_id
  	,item.i_category
@@ -19,4 +19,4 @@ select  dt.d_year
  		,item.i_category
 limit 100 ;
 
--- end query 1 in stream 0 using template query42.tpl
+

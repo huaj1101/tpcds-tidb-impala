@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query29.tpl using seed 2031708268
+
 select   
      i_item_id
     ,i_item_desc
@@ -44,4 +44,4 @@ select
    ,s_store_name
  limit 100;
 
--- end query 1 in stream 0 using template query29.tpl
+

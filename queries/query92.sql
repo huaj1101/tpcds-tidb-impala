@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query92.tpl using seed 2031708268
+
 select  
    sum(ws_ext_discount_amt)  as "Excess Discount Amount" 
 from 
@@ -8,8 +8,8 @@ from
 where
 i_manufact_id = 269
 and i_item_sk = ws_item_sk 
-and d_date between cast('1998-03-18' as date) and
-        (cast('1998-03-18' as date) + interval 90 days)
+and d_date between cast('1998-03-18' as timestamp) and
+        (cast('1998-03-18' as timestamp) + interval 90 days)
 and d_date_sk = ws_sold_date_sk 
 and ws_ext_discount_amt  
      > ( 
@@ -20,11 +20,11 @@ and ws_ext_discount_amt
            ,date_dim
          WHERE 
               ws_item_sk = i_item_sk 
-          and d_date between cast('1998-03-18' as date) and
-                             (cast('1998-03-18' as date) + interval 90 days)
+          and d_date between cast('1998-03-18' as timestamp) and
+                             (cast('1998-03-18' as timestamp) + interval 90 days)
           and d_date_sk = ws_sold_date_sk 
       ) 
 order by sum(ws_ext_discount_amt)
 limit 100;
 
--- end query 1 in stream 0 using template query92.tpl
+

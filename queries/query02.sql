@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query2.tpl using seed 1200409435
+
 with wscs as
  (select sold_date_sk
         ,sales_price
@@ -57,4 +57,4 @@ with wscs as
  where d_week_seq1=d_week_seq2-53
  order by d_week_seq1;
 
--- end query 1 in stream 0 using template query2.tpl
+

@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query36.tpl using seed 176862195
+
 select  
     sum(ss_net_profit)/sum(ss_ext_sales_price) as gross_margin
    ,i_category
@@ -27,4 +27,4 @@ select
   ,rank_within_parent
   limit 100;
 
--- end query 1 in stream 0 using template query36.tpl
+

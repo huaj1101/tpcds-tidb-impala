@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query87.tpl using seed 1200409435
+
 select count(*) 
 from ((select distinct c_last_name, c_first_name, d_date
        from store_sales, date_dim, customer
@@ -20,4 +20,4 @@ from ((select distinct c_last_name, c_first_name, d_date
 ) cool_cust
 ;
 
--- end query 1 in stream 0 using template query87.tpl
+

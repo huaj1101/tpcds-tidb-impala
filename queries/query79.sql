@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query79.tpl using seed 2031708268
+
 select 
   c_last_name,c_first_name,substr(s_city,1,30),ss_ticket_number,amt,profit
   from
@@ -20,4 +20,4 @@ select
  order by c_last_name,c_first_name,substr(s_city,1,30), profit
 limit 100;
 
--- end query 1 in stream 0 using template query79.tpl
+

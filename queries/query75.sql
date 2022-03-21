@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query75.tpl using seed 1819994127
+
 WITH all_sales AS (
  SELECT d_year
        ,i_brand_id
@@ -67,4 +67,4 @@ WITH all_sales AS (
  ORDER BY sales_cnt_diff,sales_amt_diff
  limit 100;
 
--- end query 1 in stream 0 using template query75.tpl
+

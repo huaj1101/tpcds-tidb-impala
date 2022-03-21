@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query18.tpl using seed 1978355063
+
 select  i_item_id,
         ca_country,
         ca_state, 
@@ -31,4 +31,4 @@ select  i_item_id,
 	i_item_id
  limit 100;
 
--- end query 1 in stream 0 using template query18.tpl
+

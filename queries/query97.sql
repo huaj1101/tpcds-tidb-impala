@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query97.tpl using seed 1200409435
+
 with ssci as (
 select ss_customer_sk customer_sk
       ,ss_item_sk item_sk
@@ -22,4 +22,4 @@ from ssci full outer join csci on (ssci.customer_sk=csci.customer_sk
                                and ssci.item_sk = csci.item_sk)
 limit 100;
 
--- end query 1 in stream 0 using template query97.tpl
+

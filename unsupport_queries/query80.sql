@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query80.tpl using seed 1819994127
+
 with ssr as
  (select  s_store_id as store_id,
           sum(ss_ext_sales_price) as sales,
@@ -93,4 +93,4 @@ group by web_site_id)
          ,id
  limit 100;
 
--- end query 1 in stream 0 using template query80.tpl
+

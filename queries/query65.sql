@@ -1,4 +1,4 @@
--- start query 1 in stream 0 using template query65.tpl using seed 1200409435
+
 select 
 	s_store_name,
 	i_item_desc,
@@ -26,4 +26,4 @@ select
  order by s_store_name, i_item_desc
 limit 100;
 
--- end query 1 in stream 0 using template query65.tpl
+
