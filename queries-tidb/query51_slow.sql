@@ -34,7 +34,7 @@ from (select item_sk
                  ,case when web.d_date is not null then web.d_date else store.d_date end d_date
                  ,web.cume_sales web_sales
                  ,store.cume_sales store_sales
-           from web_v1 web full outer join store_v1 store on (web.item_sk = store.item_sk
+           from web_v1 web left join store_v1 store on (web.item_sk = store.item_sk
                                                           and web.d_date = store.d_date)
           )x )y
 where web_cumulative > store_cumulative
