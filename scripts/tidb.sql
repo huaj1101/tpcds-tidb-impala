@@ -377,15 +377,16 @@ stored as kudu;
 
 create table inventory
 (
+  inv_date_sk                 integer,
   inv_item_sk                 integer,
   inv_warehouse_sk            integer,
-  inv_quantity_on_hand        integer,
-  PRIMARY KEY (inv_item_sk, inv_warehouse_sk) /*T![clustered_index] CLUSTERED */
+  inv_quantity_on_hand        integer
 )
 ;
 
 create table store_sales
 (
+  ss_sold_date_sk             integer,
   ss_sold_time_sk             integer,
   ss_item_sk                  integer,
   ss_customer_sk              integer,
@@ -407,13 +408,13 @@ create table store_sales
   ss_coupon_amt               decimal(7,2),
   ss_net_paid                 decimal(7,2),
   ss_net_paid_inc_tax         decimal(7,2),
-  ss_net_profit               decimal(7,2),
-  PRIMARY KEY (ss_sold_time_sk, ss_item_sk, ss_customer_sk, ss_cdemo_sk, ss_hdemo_sk, ss_addr_sk, ss_store_sk, ss_promo_sk) /*T![clustered_index] CLUSTERED */
+  ss_net_profit               decimal(7,2)
 )
 ;
 
 create table store_returns
 (
+  sr_returned_date_sk       integer,
   sr_return_time_sk         integer,
   sr_item_sk                integer,
   sr_customer_sk            integer,
@@ -432,13 +433,13 @@ create table store_returns
   sr_refunded_cash          decimal(7,2),
   sr_reversed_charge        decimal(7,2),
   sr_store_credit           decimal(7,2),
-  sr_net_loss               decimal(7,2),
-  PRIMARY KEY (sr_return_time_sk, sr_item_sk, sr_customer_sk, sr_cdemo_sk, sr_hdemo_sk, sr_addr_sk, sr_store_sk, sr_reason_sk) /*T![clustered_index] CLUSTERED */
+  sr_net_loss               decimal(7,2)
 )
 ;
 
 create table catalog_returns
 (
+  cr_returned_date_sk       integer,
   cr_returned_time_sk       integer,
   cr_item_sk                integer,
   cr_refunded_customer_sk   integer,
@@ -464,13 +465,13 @@ create table catalog_returns
   cr_refunded_cash          decimal(7,2),
   cr_reversed_charge        decimal(7,2),
   cr_store_credit           decimal(7,2),
-  cr_net_loss               decimal(7,2),
-  PRIMARY KEY (cr_returned_time_sk, cr_item_sk, cr_refunded_customer_sk, cr_refunded_cdemo_sk, cr_refunded_hdemo_sk, cr_refunded_addr_sk, cr_returning_customer_sk, cr_returning_cdemo_sk, cr_returning_hdemo_sk, cr_returning_addr_sk, cr_call_center_sk, cr_catalog_page_sk, cr_ship_mode_sk, cr_warehouse_sk, cr_reason_sk) /*T![clustered_index] CLUSTERED */
+  cr_net_loss               decimal(7,2)
 )
 ;
 
 create table catalog_sales
 (
+  cs_sold_date_sk           integer,
   cs_sold_time_sk           integer,
   cs_ship_date_sk           integer,
   cs_bill_customer_sk       integer,
@@ -503,13 +504,13 @@ create table catalog_sales
   cs_net_paid_inc_tax       decimal(7,2),
   cs_net_paid_inc_ship      decimal(7,2),
   cs_net_paid_inc_ship_tax  decimal(7,2),
-  cs_net_profit             decimal(7,2),
-  PRIMARY KEY (cs_sold_time_sk,cs_ship_date_sk,cs_bill_customer_sk,cs_bill_cdemo_sk,cs_bill_hdemo_sk,cs_bill_addr_sk,cs_ship_customer_sk,cs_ship_cdemo_sk,cs_ship_hdemo_sk,cs_ship_addr_sk,cs_call_center_sk,cs_catalog_page_sk,cs_ship_mode_sk,cs_warehouse_sk,cs_item_sk,cs_promo_sk) /*T![clustered_index] CLUSTERED */
+  cs_net_profit             decimal(7,2)
 )
 ;
 
 create table web_returns
 (
+  wr_returned_date_sk       integer,
   wr_returned_time_sk       integer,
   wr_item_sk                integer,
   wr_refunded_customer_sk   integer,
@@ -532,13 +533,13 @@ create table web_returns
   wr_refunded_cash          decimal(7,2),
   wr_reversed_charge        decimal(7,2),
   wr_account_credit         decimal(7,2),
-  wr_net_loss               decimal(7,2),
-  PRIMARY KEY (wr_returned_time_sk,wr_item_sk,wr_refunded_customer_sk,wr_refunded_cdemo_sk,wr_refunded_hdemo_sk,wr_refunded_addr_sk,wr_returning_customer_sk,wr_returning_cdemo_sk,wr_returning_hdemo_sk,wr_returning_addr_sk,wr_web_page_sk,wr_reason_sk) /*T![clustered_index] CLUSTERED */
+  wr_net_loss               decimal(7,2)
 )
 ;
 
 create table web_sales
 (
+  ws_sold_date_sk           integer,
   ws_sold_time_sk           integer,
   ws_ship_date_sk           integer,
   ws_item_sk                integer,
@@ -571,7 +572,61 @@ create table web_sales
   ws_net_paid_inc_tax       decimal(7,2),
   ws_net_paid_inc_ship      decimal(7,2),
   ws_net_paid_inc_ship_tax  decimal(7,2),
-  ws_net_profit             decimal(7,2),
-  PRIMARY KEY (ws_sold_time_sk,ws_ship_date_sk,ws_item_sk,ws_bill_customer_sk,ws_bill_cdemo_sk,ws_bill_hdemo_sk,ws_bill_addr_sk,ws_ship_customer_sk,ws_ship_cdemo_sk,ws_ship_hdemo_sk,ws_ship_addr_sk,ws_web_page_sk,ws_web_site_sk,ws_ship_mode_sk,ws_warehouse_sk,ws_promo_sk) /*T![clustered_index] CLUSTERED */
+  ws_net_profit             decimal(7,2)
 )
 ;
+
+-- enable tiflash
+ALTER TABLE call_center SET TIFLASH REPLICA 3;
+ALTER TABLE catalog_page SET TIFLASH REPLICA 3;
+ALTER TABLE catalog_returns SET TIFLASH REPLICA 3;
+ALTER TABLE catalog_sales SET TIFLASH REPLICA 3;
+ALTER TABLE customer_address SET TIFLASH REPLICA 3;
+ALTER TABLE customer_demographics SET TIFLASH REPLICA 3;
+ALTER TABLE customer SET TIFLASH REPLICA 3;
+ALTER TABLE date_dim SET TIFLASH REPLICA 3;
+ALTER TABLE household_demographics SET TIFLASH REPLICA 3;
+ALTER TABLE income_band SET TIFLASH REPLICA 3;
+ALTER TABLE inventory SET TIFLASH REPLICA 3;
+ALTER TABLE item SET TIFLASH REPLICA 3;
+ALTER TABLE promotion SET TIFLASH REPLICA 3;
+ALTER TABLE reason SET TIFLASH REPLICA 3;
+ALTER TABLE ship_mode SET TIFLASH REPLICA 3;
+ALTER TABLE store_returns SET TIFLASH REPLICA 3;
+ALTER TABLE store_sales SET TIFLASH REPLICA 3;
+ALTER TABLE store SET TIFLASH REPLICA 3;
+ALTER TABLE time_dim SET TIFLASH REPLICA 3;
+ALTER TABLE warehouse SET TIFLASH REPLICA 3;
+ALTER TABLE web_page SET TIFLASH REPLICA 3;
+ALTER TABLE web_returns SET TIFLASH REPLICA 3;
+ALTER TABLE web_sales SET TIFLASH REPLICA 3;
+ALTER TABLE web_site SET TIFLASH REPLICA 3;
+
+
+-- analyze
+
+analyze table call_center;
+analyze table catalog_page;
+analyze table catalog_returns;
+analyze table catalog_sales;
+analyze table customer_address;
+analyze table customer_demographics;
+analyze table customer;
+analyze table date_dim;
+analyze table household_demographics;
+analyze table income_band;
+analyze table inventory;
+analyze table item;
+analyze table promotion;
+analyze table reason;
+analyze table ship_mode;
+analyze table store_returns;
+analyze table store_sales;
+analyze table store;
+analyze table time_dim;
+analyze table warehouse;
+analyze table web_page;
+analyze table web_returns;
+analyze table web_sales;
+analyze table web_site;
+
