@@ -1,9 +1,8 @@
-
 with ws_wh as
-(select ws1.ws_order_number,ws1.ws_warehouse_sk wh1,ws2.ws_warehouse_sk wh2
- from web_sales ws1,web_sales ws2
- where ws1.ws_order_number = ws2.ws_order_number
-   and ws1.ws_warehouse_sk <> ws2.ws_warehouse_sk)
+(select ws_order_number
+from web_sales
+group by ws_order_number
+having count(ws_warehouse_sk) > 1)
  select  
    count(distinct ws_order_number) as "order count"
   ,sum(ws_ext_ship_cost) as "total shipping cost"
@@ -24,9 +23,7 @@ and web_company_name = 'pri'
 and ws1.ws_order_number in (select ws_order_number
                             from ws_wh)
 and ws1.ws_order_number in (select wr_order_number
-                            from web_returns,ws_wh
-                            where wr_order_number = ws_wh.ws_order_number)
-order by count(distinct ws_order_number)
+                            from web_returns)
 limit 100;
 
 
