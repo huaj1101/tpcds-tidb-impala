@@ -1,75 +1,73 @@
-
-with ss as (
- select
-          i_manufact_id,sum(ss_ext_sales_price) total_sales
- from
+SELECT  i_manufact_id ,SUM(total_sales) total_sales FROM
+(
+ SELECT
+          i_manufact_id,SUM(ss_ext_sales_price) total_sales
+ FROM
  	store_sales,
  	date_dim,
          customer_address,
          item
- where
-         i_manufact_id in (select
+ WHERE
+         i_manufact_id IN (SELECT
   i_manufact_id
-from
+FROM
  item
-where i_category in ('Books'))
- and     ss_item_sk              = i_item_sk
- and     ss_sold_date_sk         = d_date_sk
- and     d_year                  = 1999
- and     d_moy                   = 3
- and     ss_addr_sk              = ca_address_sk
- and     ca_gmt_offset           = -6 
- group by i_manufact_id),
- cs as (
- select
-          i_manufact_id,sum(cs_ext_sales_price) total_sales
- from
+WHERE i_category IN ('Books'))
+ AND     ss_item_sk              = i_item_sk
+ AND     ss_sold_date_sk         = d_date_sk
+ AND     d_year                  = 1999
+ AND     d_moy                   = 3
+ AND     ss_addr_sk              = ca_address_sk
+ AND     ca_gmt_offset           = -6 
+ GROUP BY i_manufact_id
+
+UNION ALL 
+ 
+ SELECT
+          i_manufact_id,SUM(cs_ext_sales_price) total_sales
+ FROM
  	catalog_sales,
  	date_dim,
          customer_address,
          item
- where
-         i_manufact_id               in (select
+ WHERE
+         i_manufact_id               IN (SELECT
   i_manufact_id
-from
+FROM
  item
-where i_category in ('Books'))
- and     cs_item_sk              = i_item_sk
- and     cs_sold_date_sk         = d_date_sk
- and     d_year                  = 1999
- and     d_moy                   = 3
- and     cs_bill_addr_sk         = ca_address_sk
- and     ca_gmt_offset           = -6 
- group by i_manufact_id),
- ws as (
- select
-          i_manufact_id,sum(ws_ext_sales_price) total_sales
- from
+WHERE i_category IN ('Books'))
+ AND     cs_item_sk              = i_item_sk
+ AND     cs_sold_date_sk         = d_date_sk
+ AND     d_year                  = 1999
+ AND     d_moy                   = 3
+ AND     cs_bill_addr_sk         = ca_address_sk
+ AND     ca_gmt_offset           = -6 
+ GROUP BY i_manufact_id
+ 
+ UNION ALL
+
+ SELECT
+          i_manufact_id,SUM(ws_ext_sales_price) total_sales
+ FROM
  	web_sales,
  	date_dim,
          customer_address,
          item
- where
-         i_manufact_id               in (select
+ WHERE
+         i_manufact_id               IN (SELECT
   i_manufact_id
-from
+FROM
  item
-where i_category in ('Books'))
- and     ws_item_sk              = i_item_sk
- and     ws_sold_date_sk         = d_date_sk
- and     d_year                  = 1999
- and     d_moy                   = 3
- and     ws_bill_addr_sk         = ca_address_sk
- and     ca_gmt_offset           = -6
- group by i_manufact_id)
-  select  i_manufact_id ,sum(total_sales) total_sales
- from  (select * from ss 
-        union all
-        select * from cs 
-        union all
-        select * from ws) tmp1
- group by i_manufact_id
- order by total_sales
-limit 100;
+WHERE i_category IN ('Books'))
+ AND     ws_item_sk              = i_item_sk
+ AND     ws_sold_date_sk         = d_date_sk
+ AND     d_year                  = 1999
+ AND     d_moy                   = 3
+ AND     ws_bill_addr_sk         = ca_address_sk
+ AND     ca_gmt_offset           = -6
+ GROUP BY i_manufact_id
 
-
+) tmp1
+ GROUP BY i_manufact_id
+ ORDER BY total_sales
+LIMIT 100;

@@ -1,4 +1,4 @@
-
+EXPLAIN ANALYZE
 WITH wscs AS
  (
 	SELECT dd.d_day_name, dd.d_week_seq, SUM(ws_sold_date_sk) sold_date_sk, SUM(ws_ext_sales_price) sales_price
