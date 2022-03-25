@@ -602,6 +602,7 @@ ALTER TABLE web_returns SET TIFLASH REPLICA 3;
 ALTER TABLE web_sales SET TIFLASH REPLICA 3;
 ALTER TABLE web_site SET TIFLASH REPLICA 3;
 
+-- import data from csv using tilighting, then execute the following scripts
 
 -- analyze
 
@@ -630,3 +631,4 @@ analyze table web_returns;
 analyze table web_sales;
 analyze table web_site;
 
+-- wait for data sync to tiflash, that cost about half hour in my cluster
